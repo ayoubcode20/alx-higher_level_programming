@@ -4,9 +4,13 @@ def print_matrix_integer(matrix=[[]]):
         return
     if not all(isinstance(row, list) for row in matrix):
         return
-    if not all(len(row) == len(matrix[0]) for row in matrix):
+    row_len = len(matrix[0])
+    if not all(len(row) == row_len for row in matrix):
         return
     for lis in matrix:
-        for num in lis:
-            print("{:d}".format(num), end=' ')
+        for idx in range(row_len):
+            if idx == row_len - 1:
+                print("{:d}".format(lis[idx]), end='$')
+            else:
+                print("{:d}".format(lis[idx]), end=' ')
         print('')
