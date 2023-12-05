@@ -4,6 +4,8 @@ def print_matrix_integer(matrix=[[]]):
         return
     if not all(isinstance(row, list) for row in matrix):
         return
+    if not all(len(row) == len(matrix[0]) for row in matrix):
+        return
     for lis in matrix:
         for num in lis:
             print("{:d}".format(num), end=' ')
