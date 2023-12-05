@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 def print_matrix_integer(matrix=[[]]):
-    if isinstance(matrix, list):
-        for lis in matrix:
-            for num in lis:
-                print("{}".format(num), end=' ')
-            print('')
-    else:
+    if not isinstance(matrix, list):
         return
+    if not all(isinstance(row, list) for row in matrix):
+        return
+    for lis in matrix:
+        for num in lis:
+            print("{}".format(num), end=' ')
+        print('')
