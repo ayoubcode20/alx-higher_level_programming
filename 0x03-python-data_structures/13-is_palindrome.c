@@ -1,6 +1,26 @@
 #include "lists.h"
 
 /**
+ * find_length - finds the length of a linked list
+ * head: the singly linked list
+ *
+ * Return: The length
+*/
+int find_length(listint_t *head)
+{
+	int length = 0;
+
+	listint_t *current = head;
+	while (current != NULL)
+	{
+		length++;
+		current = current->next;
+	}
+
+	return length;
+}
+
+/**
  * is_palindrome - function that checks if a singly linked list is a palindrome
  * @head: The singly linked list
  *

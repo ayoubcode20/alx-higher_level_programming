@@ -72,24 +72,3 @@ void free_listint(listint_t *head)
         free(current);
     }
 }
-
-/**
- * find_length - finds the length of a linked list
- * head: the singly linked list
- *
- * Return: The length
-*/
-int find_length(listint_t *head)
-{
-    int length = 0;
-
-    // Traverse the linked list and count nodes
-    listint_t *current = head;
-    while (current != NULL)
-    {
-        length++;
-        current = current->next;
-    }
-
-    return length;
-}
