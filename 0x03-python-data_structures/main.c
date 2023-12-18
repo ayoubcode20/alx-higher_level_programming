@@ -2,6 +2,29 @@
 #include <stdlib.h>
 #include "lists.h"
 
+listint_t *reverse_list(listint_t *head)
+{
+	if (head == NULL || head->next == NULL)
+		return head;
+	listint_t *rest = reverse_list(head->next);
+	head->next->next = head;
+	head->next = NULL;
+	
+	return rest;
+}
+
+
+void print(listint_t *head)
+{
+	if (!head)
+	{
+		printf("\n");
+		return;
+	}
+	printf("%d ", head->n);
+	print(head->next);
+}
+
 /**
  * main - check the code for
  *
@@ -13,21 +36,21 @@ int main(void)
 
     head = NULL;
     add_nodeint_end(&head, 1);
-    add_nodeint_end(&head, 17);
-    add_nodeint_end(&head, 972);
+    add_nodeint_end(&head, 2);
+    add_nodeint_end(&head, 3);
     add_nodeint_end(&head, 50);
     add_nodeint_end(&head, 98);
-    add_nodeint_end(&head, 98);
-    add_nodeint_end(&head, 50);
+    add_nodeint_end(&head, 108);
+    add_nodeint_end(&head, 500);
     add_nodeint_end(&head, 972);
-    add_nodeint_end(&head, 17);
-    add_nodeint_end(&head, 1);
-    print_listint(head);
+    add_nodeint_end(&head, 1007);
+    add_nodeint_end(&head, 2000);
+    print(head);
 
-    if (is_palindrome(&head) == 1)
-        printf("Linked list is a palindrome\n");
-    else
-        printf("Linked list is not a palindrome\n");
+    printf("\n-----------\n");
+
+    head = reverse_list(head);
+    print(head);
 
     free_listint(head);
 
